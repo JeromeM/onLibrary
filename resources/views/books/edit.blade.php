@@ -10,8 +10,8 @@
         <input type="hidden" name="id" value="{{ $book->id }}">
 
         <div class="form-group">
-            <label for="firstname">Title</label>
-            <input type="text" class="form-control" name="firstname" value="{{ $book->title }}" />
+            <label for="title">Title</label>
+            <input type="text" class="form-control" name="title" value="{{ $book->title }}" />
         </div>
         <div class="form-group">
             <label for="author">Author</label>

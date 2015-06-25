@@ -2,3 +2,10 @@
 /node_modules
 Homestead.yaml
 .env
+.env.example
+composer.phar
+readme.md
+.idea
+/.idea
+.idea/*.xml
+.idea/*.iml

@@ -2,10 +2,9 @@
 
 namespace onLibrary\Http\Controllers;
 
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
-
 use onLibrary\Http\Requests;
-use onLibrary\Http\Controllers\Controller;
 use onLibrary\Models\Books;
 
 class BooksController extends Controller
@@ -32,6 +31,21 @@ class BooksController extends Controller
     }
 
     /**
+     * @param Request $request
+     * @return mixed
+     */
+    public function handleCreate(Request $request)
+    {
+        $book = new Books;
+        $book->title = $request->input('title');
+        $book->author_id = $request->input('author');
+        $book->save();
+
+        return Redirect::action('BooksController@index');
+
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -43,24 +57,40 @@ class BooksController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  int  $id
-     * @return Response
+     * @param Request $request
+     * @return mixed
      */
-    public function update($id)
+    public function handleEdit(Request $request)
     {
-        //
+        $book = Books::findOrFail($request->input('id'));
+        $book->title = $request->input('title');
+        $book->author_id = $request->input('author');
+        $book->save();
+
+        return Redirect::action('BooksController@index');
+    }
+
+
+    /**
+     * @param Books $book
+     * @return mixed
+     */
+    public function delete(Books $book)
+    {
+        return view('books.delete', compact('book'));
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
+     * @param Request $request
+     * @return mixed
      */
-    public function destroy($id)
+    public function handleDelete(Request $request)
     {
-        //
+        $book = Books::findOrFail($request->input('id'));
+        $book->delete();
+
+        return Redirect::action('BooksController@index');
     }
+
+
 }
