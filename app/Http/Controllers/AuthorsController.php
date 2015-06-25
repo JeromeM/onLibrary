@@ -30,6 +30,10 @@ class AuthorsController extends Controller
         return view('authors.create');
     }
 
+    /**
+     * @param Request $request
+     * @return mixed
+     */
     public function handleCreate(Request $request)
     {
 

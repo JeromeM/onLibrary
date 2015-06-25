@@ -7,5 +7,3 @@ composer.phar
 readme.md
 .idea
 /.idea
-.idea/*.xml
-.idea/*.iml

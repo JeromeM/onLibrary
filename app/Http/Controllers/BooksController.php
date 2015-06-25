@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use onLibrary\Http\Requests;
 use onLibrary\Models\Books;
+use Validator;
 
 class BooksController extends Controller
 {
@@ -36,6 +37,7 @@ class BooksController extends Controller
      */
     public function handleCreate(Request $request)
     {
+
         $book = new Books;
         $book->title = $request->input('title');
         $book->author_id = $request->input('author');
@@ -92,5 +94,42 @@ class BooksController extends Controller
         return Redirect::action('BooksController@index');
     }
 
+
+    public function bookValidate(Request $request)
+    {
+        $success    = true;
+        $errors     = array();
+
+        // Validation des données
+        $input = array(
+            'title'     => $request->input('title'),
+            'author'    => $request->input('author'),
+        );
+
+        $rules = array (
+            'title'     => 'required|string|min:3',
+            'author'    => 'required|integer|exists:authors,id',
+        );
+
+        $messages = array(
+            'title.required'    => 'Title can\'t be empty',
+            'title.string'      => 'Title must be a string',
+            'title.min'         => 'Title must be a least 3 characters long',
+
+            // On ne devrait jamais voir cette erreur, car la liste vient *deja* de la base de données
+            'author.exists'     => 'Author unknown. You must add it before',
+        );
+
+        $validator = Validator::make($input, $rules, $messages);
+
+        if ($validator->fails()) {
+            $success = false;
+            $errors = $validator->errors();
+        }
+
+
+        return response()->json(['success' => $success, 'errors' => $errors]);
+
+    }
 
 }

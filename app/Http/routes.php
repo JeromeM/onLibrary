@@ -47,4 +47,6 @@ Route::get('/books/delete/{book}', 'BooksController@delete');
 // Form submission
 Route::post('/books/create', 'BooksController@handleCreate');
 Route::post('/books/edit', 'BooksController@handleEdit');
-Route::post('/books/delete', 'BooksController@handleDelete');#
+Route::post('/books/delete', 'BooksController@handleDelete');
+// Ajax Validation
+Route::post('/books/validate', 'BooksController@bookValidate');

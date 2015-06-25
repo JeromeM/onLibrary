@@ -33,8 +33,7 @@ elixir(function(mix) {
     mix.scripts([
         'jquery.min.js',
         'jquery.autocomplete.min.js',
-        'bootstrap.min.js',
-        'npm.js'
+        'bootstrap.min.js'
     ], 'public/js', 'resources/assets/js');
 
 });
