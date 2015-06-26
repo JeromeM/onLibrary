@@ -21,7 +21,7 @@
                 @endforeach
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">{{ trans('books.createAction') }}</button>
-        <a href="{{ action('BooksController@index') }}" class="btn btn-link">{{ trans('books.cancel') }}</a>
+        <button type="submit" class="btn btn-primary">{{ trans('general.createAction') }}</button>
+        <a href="{{ action('BooksController@index') }}" class="btn btn-link">{{ trans('general.cancel') }}</a>
     </form>
 @stop

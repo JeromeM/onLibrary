@@ -29,12 +29,12 @@ jQuery ->
         # On va verifier les erreurs et mettre les champs en surbrillance s'il y a des erreurs
         if data.success is false
 
-          errors = null
+          errors = undefined
 
           # Erreur sur le titre
           if data.errors.title?
             inputTitle.addClass('bg-danger')
-            errors = errors + '<ul>' + data.errors.title + '</ul>'
+            errors = '<ul>' + data.errors.title + '</ul>'
 
           # Erreur sur l'auteur (n'est pas censé arriver..)
           if data.errors.author?

@@ -18,10 +18,10 @@
         success: function(data, textStatus, jqXHR) {
           var errors;
           if (data.success === false) {
-            errors = null;
+            errors = void 0;
             if (data.errors.title != null) {
               inputTitle.addClass('bg-danger');
-              errors = errors + '<ul>' + data.errors.title + '</ul>';
+              errors = '<ul>' + data.errors.title + '</ul>';
             }
             if (data.errors.author != null) {
               inputTitle.addClass('bg-danger');

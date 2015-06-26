@@ -112,12 +112,12 @@ class BooksController extends Controller
         );
 
         $messages = array(
-            'title.required'    => 'Title can\'t be empty',
-            'title.string'      => 'Title must be a string',
-            'title.min'         => 'Title must be a least 3 characters long',
+            'title.required'    => trans('validation.titleRequired'),
+            'title.string'      => trans('validation.titleString'),
+            'title.min'         => trans('validation.titleMin'),
 
             // On ne devrait jamais voir cette erreur, car la liste vient *deja* de la base de données
-            'author.exists'     => 'Author unknown. You must add it before',
+            'author.exists'     => trans('validation.authorExists'),
         );
 
         $validator = Validator::make($input, $rules, $messages);

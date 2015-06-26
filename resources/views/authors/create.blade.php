@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="page-header">
-        <h1>Add an author</h1>
+        <h1>{{ trans('authors.add') }}</h1>
     </div>
 
     @if (count($errors) > 0)
@@ -18,14 +18,14 @@
     <form action="{{ action('AuthorsController@handleCreate') }}" method="post" role="form">
         {!! csrf_field() !!}
         <div class="form-group">
-            <label for="firstname">Firstname</label>
+            <label for="firstname">{{ trans('authors.firstname') }}</label>
             <input type="text" class="form-control" name="firstname" />
         </div>
         <div class="form-group">
-            <label for="lastname">Lastname</label>
+            <label for="lastname">{{ trans('authors.lastname') }}</label>
             <input type="text" class="form-control" name="lastname" />
         </div>
-        <input type="submit" value="Create" class="btn btn-primary" />
-        <a href="{{ action('AuthorsController@index') }}" class="btn btn-link">Cancel</a>
+        <button type="submit" class="btn btn-primary">{{ trans('general.createAction') }}</button>
+        <a href="{{ action('AuthorsController@index') }}" class="btn btn-link">{{ trans('general.cancel') }}</a>
     </form>
 @stop

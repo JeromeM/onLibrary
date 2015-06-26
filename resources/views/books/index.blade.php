@@ -19,7 +19,7 @@
             <tr>
                 <th>{{ trans('books.title') }}</th>
                 <th>{{ trans('books.author') }}</th>
-                <th>{{ trans('books.actions') }}</th>
+                <th>{{ trans('general.actions') }}</th>
             </tr>
             </thead>
             <tbody>
@@ -28,8 +28,8 @@
                     <td>{{ $book->title }}</td>
                     <td>{{ $book->author->firstname . ' ' . $book->author->lastname}}</td>
                     <td>
-                        <a href="{{ action('BooksController@edit', $book->id) }}" class="btn btn-default">{{ trans('books.editAction') }}</a>
-                        <a href="{{ action('BooksController@delete', $book->id) }}" class="btn btn-danger">{{ trans('books.deleteAction') }}</a>
+                        <a href="{{ action('BooksController@edit', $book->id) }}" class="btn btn-default">{{ trans('general.editAction') }}</a>
+                        <a href="{{ action('BooksController@delete', $book->id) }}" class="btn btn-danger">{{ trans('general.deleteAction') }}</a>
                     </td>
                 </tr>
             @endforeach

@@ -9,11 +9,5 @@ return [
     'nobook'        => 'Il n\'y a aucun livre',
     'title'         => 'Titre',
     'author'        => 'Auteur',
-    'actions'       => 'Actions',
-    'createAction'  => 'Créer',
-    'editAction'    => 'Modifier',
-    'deleteAction'  => 'Supprimer',
-    'cancel'        => 'Annuler',
-    'confirm'       => 'Êtes-vous sûr ?',
 
 ];

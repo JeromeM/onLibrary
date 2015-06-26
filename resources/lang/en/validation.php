@@ -105,4 +105,12 @@ return [
 
     'attributes' => [],
 
+
+    /*********** JEROME ***********/
+    'titleRequired' => 'Title cannot be empty',
+    'titleString'   => 'Title must be a string',
+    'titleMin'      => 'Title must have at least 3 characters',
+
+    'authorExists'  => 'Author is unknown',
+
 ];

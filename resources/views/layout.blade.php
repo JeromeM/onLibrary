@@ -16,9 +16,9 @@
         <div class="container">
             <nav class="navbar navbar-default" role="navigation">
                 <div class="navbar-header">
-                    <a href="{{ action('IndexController@index') }}" class="navbar-brand">Index</a>
-                    <a href="{{ action('BooksController@index') }}" class="navbar-brand">Books</a>
-                    <a href="{{ action('AuthorsController@index') }}" class="navbar-brand">Authors</a>
+                    <a href="{{ action('IndexController@index') }}" class="navbar-brand">{{ trans('general.index') }}</a>
+                    <a href="{{ action('BooksController@index') }}" class="navbar-brand">{{ trans('general.books') }}</a>
+                    <a href="{{ action('AuthorsController@index') }}" class="navbar-brand">{{ trans('general.authors') }}</a>
                 </div>
             </nav>
             @yield('content')

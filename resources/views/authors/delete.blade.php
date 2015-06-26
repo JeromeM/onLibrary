@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="page-header">
-        <h1>{{ trans('books.deleteAction') }} {{ $author->firstname . ' ' . $author->lastname }} <small>{{ trans('books.confirm') }}</small></h1>
+        <h1>{{ trans('authors.delete') }} {{ $author->firstname . ' ' . $author->lastname }} <small>{{ trans('general.confirm') }}</small></h1>
     </div>
     <form action="{{ action('AuthorsController@handleDelete') }}" method="post" role="form">
         {!! csrf_field() !!}
