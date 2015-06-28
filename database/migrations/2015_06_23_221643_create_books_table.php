@@ -14,17 +14,18 @@ class CreateBooksTable extends Migration
     {
         if (!Schema::hasTable('books')) {
             Schema::create('books', function (Blueprint $table) {
+                $table->engine = 'InnoDB';
+
                 $table->increments('id');
                 $table->integer('author_id')->unsigned();
-                $table->string('title');
+                $table->integer('editor_id')->unsigned();
+                $table->string('title', 255);
+                $table->text('summary')->nullable();
+                $table->integer('pages')->nullable();
+
                 $table->timestamps();
-                $table->index('title');
-                $table->index('author_id');
-                $table->foreign('author_id')
-                    ->references('id')
-                    ->on('authors')
-                    ->onUpdate('cascade')
-                    ->onDelete('cascade');
+
+                $table->unique('title');
             });
         }
     }

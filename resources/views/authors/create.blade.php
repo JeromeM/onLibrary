@@ -5,17 +5,9 @@
         <h1>{{ trans('authors.add') }}</h1>
     </div>
 
-    @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    <div class="alert alert-danger hidden" id="errorMessage"></div>
 
-    <form action="{{ action('AuthorsController@handleCreate') }}" method="post" role="form">
+    <form name="authorCreateForm" action="{{ action('AuthorsController@handleCreate') }}" method="post" role="form">
         {!! csrf_field() !!}
         <div class="form-group">
             <label for="firstname">{{ trans('authors.firstname') }}</label>

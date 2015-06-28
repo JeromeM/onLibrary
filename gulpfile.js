@@ -21,7 +21,8 @@ elixir(function(mix) {
 
     // Compilation CoffeeScript
     mix.coffee([
-        'onlibrary.coffee'
+        'authors.coffee',
+        'books.coffee'
     ]);
 
     // 1 seul fichier CSS

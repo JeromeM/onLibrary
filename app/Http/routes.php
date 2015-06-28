@@ -1,21 +1,11 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
-
 
 /**
  * Base routing
  */
 Route::get('/', 'IndexController@index');
+
 
 
 /**
@@ -32,6 +22,9 @@ Route::get('/author/delete/{author}', 'AuthorsController@delete');
 Route::post('/author/create', 'AuthorsController@handleCreate');
 Route::post('/author/edit', 'AuthorsController@handleEdit');
 Route::post('/author/delete', 'AuthorsController@handleDelete');
+// Ajax
+Route::post('/author/validate', 'AuthorsController@authorValidate');
+
 
 
 /**
@@ -41,12 +34,12 @@ Route::post('/author/delete', 'AuthorsController@handleDelete');
 Route::model('book', 'onLibrary\Models\Books');
 // Show pages
 Route::get('/books', 'BooksController@index');
-Route::get('/books/create', 'BooksController@create');
-Route::get('/books/edit/{book}', 'BooksController@edit');
-Route::get('/books/delete/{book}', 'BooksController@delete');
+Route::get('/book/create', 'BooksController@create');
+Route::get('/book/edit/{book}', 'BooksController@edit');
+Route::get('/book/delete/{book}', 'BooksController@delete');
 // Form submission
-Route::post('/books/create', 'BooksController@handleCreate');
-Route::post('/books/edit', 'BooksController@handleEdit');
-Route::post('/books/delete', 'BooksController@handleDelete');
+Route::post('/book/create', 'BooksController@handleCreate');
+Route::post('/book/edit', 'BooksController@handleEdit');
+Route::post('/book/delete', 'BooksController@handleDelete');
 // Ajax Validation
-Route::post('/books/validate', 'BooksController@bookValidate');
+Route::post('/book/validate', 'BooksController@bookValidate');

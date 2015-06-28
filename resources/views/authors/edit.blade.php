@@ -5,7 +5,9 @@
         <h1>{{ trans('authors.edit') }}</h1>
     </div>
 
-    <form action="{{ action('AuthorsController@handleEdit') }}" method="post" role="form">
+    <div class="alert alert-danger hidden" id="errorMessage"></div>
+
+    <form name="authorEditForm" action="{{ action('AuthorsController@handleEdit') }}" method="post" role="form">
         {!! csrf_field() !!}
         <input type="hidden" name="id" value="{{ $author->id }}">
 

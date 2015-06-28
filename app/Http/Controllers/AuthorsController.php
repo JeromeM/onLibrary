@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use onLibrary\Http\Requests;
 use onLibrary\Models\Authors;
+use Validator;
 
 class AuthorsController extends Controller
 {
@@ -36,16 +37,6 @@ class AuthorsController extends Controller
      */
     public function handleCreate(Request $request)
     {
-
-        $this->validate($request, [
-            'firstname' => 'required|min:3',
-            'lastname' => 'required|min:3',
-        ], [
-            'firstname.required' => 'Firstname is empty',
-            'firstname.min' => 'Firstname must have at least 3 characters',
-            'lastname.required' => 'Lastname is empty',
-            'lastname.min' => 'Lastname must have at least 3 characters',
-        ]);
         $author = new Authors;
         $author->firstname = $request->input('firstname');
         $author->lastname = $request->input('lastname');
@@ -87,11 +78,53 @@ class AuthorsController extends Controller
 
     public function handleDelete(Request $request)
     {
-        $id = $request->input('author');
-        $author = Authors::findOrFail($id);
+        $author = Authors::findOrFail($request->input('id'));
         $author->delete();
 
         return Redirect::action('AuthorsController@index');
+    }
+
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function authorValidate(Request $request)
+    {
+        $success    = true;
+        $errors     = array();
+
+        // Validation des données
+        $input = array(
+            'firstname'     => $request->input('firstname'),
+            'lastname'      => $request->input('lastname'),
+        );
+
+        $rules = array (
+            'firstname'     => 'required|string|min:3',
+            'lastname'      => 'required|string|min:3',
+        );
+
+        $messages = array(
+            'firstname.required'    => trans('validation.firstnameRequired'),
+            'firstname.string'      => trans('validation.firstnameString'),
+            'firstname.min'         => trans('validation.firstnameMin'),
+
+            'lastname.required'    => trans('validation.lastnameRequired'),
+            'lastname.string'      => trans('validation.lastnameString'),
+            'lastname.min'         => trans('validation.lastnameeMin'),
+        );
+
+        $validator = Validator::make($input, $rules, $messages);
+
+        if ($validator->fails()) {
+            $success = false;
+            $errors = $validator->errors();
+        }
+
+
+        return response()->json(['success' => $success, 'errors' => $errors]);
+
     }
 
 }

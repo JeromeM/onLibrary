@@ -113,4 +113,12 @@ return [
 
     'authorExists'  => 'Author is unknown',
 
+    'firstnameRequired' => 'Firstname cannot be empty',
+    'firstnameString'   => 'Firstname must be a string',
+    'firstnameMin'      => 'Firstname must have at least 3 characters',
+
+    'lastnameRequired'  => 'Lastname cannot be empty',
+    'lastnameString'    => 'Lastname must be a string',
+    'lastnameeMin'      => 'Lastname must have at least 3 characters',
+
 ];

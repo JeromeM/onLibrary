@@ -6,7 +6,7 @@
     </div>
     <form action="{{ action('AuthorsController@handleDelete') }}" method="post" role="form">
         {!! csrf_field() !!}
-        <input type="hidden" name="author" value="{{ $author->id }}" />
+        <input type="hidden" name="id" value="{{ $author->id }}" />
         <button type="submit" class="btn btn-danger">{{ trans('general.yes') }}</button>
         <a href="{{ action('AuthorsController@index') }}" class="btn btn-default">{{ trans('general.no') }}</a>
     </form>

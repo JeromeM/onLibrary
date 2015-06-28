@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAuthorsTable extends Migration
+class CreatePlansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,16 +12,15 @@ class CreateAuthorsTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('authors')) {
-            Schema::create('authors', function (Blueprint $table) {
+        if (!Schema::hasTable('plans')) {
+            Schema::create('plans', function (Blueprint $table) {
                 $table->engine = 'InnoDB';
 
                 $table->increments('id');
-                $table->string('firstname', 80);
-                $table->string('lastname', 80);
-                $table->timestamps();
+                $table->string('name', 60);
+                $table->integer('maxbooks');
 
-                $table->unique(['firstname', 'lastname']);
+                $table->unique('name');
             });
         }
     }
@@ -33,6 +32,6 @@ class CreateAuthorsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('authors');
+        Schema::drop('plans');
     }
 }
