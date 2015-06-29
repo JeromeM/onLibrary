@@ -10,13 +10,47 @@ use onLibrary\Http\Controllers\Controller;
 class IndexController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return Response
+     * Homepage
      */
     public function index()
     {
-        return view('index');
+        //
+    }
+
+
+    /**
+     * Login
+     */
+    public function login()
+    {
+        //
+    }
+
+
+    /**
+     * Account creation
+     */
+    public function create()
+    {
+        //
+    }
+
+
+    /**
+     * Plans listing
+     */
+    public function plans()
+    {
+
+    }
+
+
+    /**
+     * Contact page
+     */
+    public function contact()
+    {
+        //
     }
 
 }

@@ -2,44 +2,105 @@
 
 
 /**
- * Base routing
+ * Homepage and related
  */
-Route::get('/', 'IndexController@index');
-
+Route::get('/',         'IndexController@index');
+Route::get('/login',    'IndexController@login');
+Route::get('/create',   'IndexController@create');
+Route::get('/plans',    'IndexController@plans');
+Route::get('/contact',  'IndexController@contact');
 
 
 /**
- * Authors
+ * Data models
  */
-// Bind parameter author to Authors model
-Route::model('author', 'onLibrary\Models\Authors');
-// Show pages
-Route::get('/authors', 'AuthorsController@index');
-Route::get('/author/create', 'AuthorsController@create');
-Route::get('/author/edit/{author}', 'AuthorsController@edit');
-Route::get('/author/delete/{author}', 'AuthorsController@delete');
-// Form submission
-Route::post('/author/create', 'AuthorsController@handleCreate');
-Route::post('/author/edit', 'AuthorsController@handleEdit');
-Route::post('/author/delete', 'AuthorsController@handleDelete');
-// Ajax
-Route::post('/author/validate', 'AuthorsController@authorValidate');
-
+// Data model
+Route::model('user',    'onLibrary\Models\Users');
+Route::model('book',    'onLIbrary\Models\Books');
+Route::model('author',  'onLibrary\Models\Authors');
 
 
 /**
- * Books
+ * Library group
  */
-// Bind parameter
-Route::model('book', 'onLibrary\Models\Books');
-// Show pages
-Route::get('/books', 'BooksController@index');
-Route::get('/book/create', 'BooksController@create');
-Route::get('/book/edit/{book}', 'BooksController@edit');
-Route::get('/book/delete/{book}', 'BooksController@delete');
-// Form submission
-Route::post('/book/create', 'BooksController@handleCreate');
-Route::post('/book/edit', 'BooksController@handleEdit');
-Route::post('/book/delete', 'BooksController@handleDelete');
-// Ajax Validation
-Route::post('/book/validate', 'BooksController@bookValidate');
+Route::group([
+    'middleware' => 'userIsLogged',
+    'namespace'  => 'Users',
+], function() {
+    // Navigation
+    Route::get('/account',                          'AccountController@index');
+
+    Route::get('/account/infos',                    'AccountController@show');
+    Route::get('/account/modify',                   'AccountControler@modify');
+    Route::get('/account/plan',                     'AccountController@buyPlan');
+
+    Route::get('/account/addBook',                  'AccountController@addBook');
+    Route::get('/account/delBook',                  'AccountController@delBook');
+
+    // Forms Submission
+    Route::post('/account/modify',                  'AccountController@modifyHandler');
+    Route::post('/account/plan',                    'AccountController@buyPlanHandler');
+    Route::post('/account/addBook',                 'AccountController@addBookHandler');
+    Route::post('/account/delPlan',                 'AccountController@delBookHandler');
+
+
+    // Ajax Validation
+    Route::post('/account/modify/validation',       'AccountController@modifyValidation');
+    Route::post('/account/addbook/validation',      'AccountController@addBookValidation');
+});
+
+
+/**
+ * Admin group
+ */
+Route::group([
+    'middleware' => 'admin',
+    'namespace'  => 'Admin',
+], function() {
+    // Base navigation
+    Route::get('/admin',                            'AdminController@index');
+
+    // User navigation
+    Route::get('/admin/users',                      'UserController@index');
+    Route::get('/admin/user/add',                   'UserController@add');
+    Route::get('/admin/user/modify',                'UserController@modify');
+    Route::get('/admin/user/del',                   'UserController@del');
+    Route::get('/admin/user/addPlan',               'UserController@addPlan');
+    // User forms submissions
+    Route::post('/admin/user/add',                  'UserController@addHandler');
+    Route::post('/admin/user/modify',               'UserController@modifyHandler');
+    Route::post('/admin/user/del',                  'UserController@delHandler');
+    Route::post('/admin/user/addPlan',              'UserController@addPlanHandler');
+    // User Ajax validation
+    Route::post('/admin/user/add/validation',       'UserController@addValidation');
+    Route::post('/admin/user/modify/validation',    'UserController@modifyValidation');
+
+
+    // Authors navigation
+    Route::get('/admin/authors',                    'AuthorsController@index');
+    Route::get('/admin/author/add',                 'AuthorsController@add');
+    Route::get('/admin/author/modify',              'AuthorsController@modify');
+    Route::get('/admin/author/del',                 'AuthorsController@del');
+    // Authors forms submissions
+    Route::post('/admin/author/add',                'AuthorsController@addHandler');
+    Route::post('/admin/author/modify',             'AuthorsController@modifyHandler');
+    Route::post('/admin/author/del',                'AuthorsController@delHandler');
+    // Authors Ajax validation
+    Route::post('/admin/author/add/validation',     'AuthorsController@addValidation');
+    Route::post('/admin/author/modify/validation',  'AuthorsController@modifyValidation');
+
+
+    // Books navigation
+    Route::get('/admin/books',                      'BooksController@index');
+    Route::get('/admin/book/add',                   'BooksController@add');
+    Route::get('/admin/book/modify',                'BooksController@modify');
+    Route::get('/admin/book/del',                   'BooksController@del');
+    // Books forms submissions
+    Route::post('/admin/book/add',                  'BooksController@addHandler');
+    Route::post('/admin/book/modify',               'BooksController@modifyHandler');
+    Route::post('/admin/book/del',                  'BooksController@delHandler');
+    // Books Ajax validation
+    Route::post('/admin/book/add/validation',       'BooksController@addValidation');
+    Route::post('/admin/book/modify/validation',    'BooksController@modifyValidation');
+
+});

@@ -10,31 +10,96 @@ use Validator;
 
 class AuthorsController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return Response
+     * AUthors list
      */
+    public function index()
+    {
+        //
+    }
+
+
+    /**
+     * Add an author
+     */
+    public function add()
+    {
+        //
+    }
+
+    /**
+     * Add an author form submission
+     */
+    public function addHandler()
+    {
+        //
+    }
+
+    /**
+     * Add an author form validation
+     */
+    public function addValidation()
+    {
+        //
+    }
+
+
+    /**
+     * Modify an author
+     */
+    public function modify()
+    {
+        //
+    }
+
+    /**
+     * Modify an author form submission
+     */
+    public function modifyHandler()
+    {
+        //
+    }
+
+    /**
+     * Modify an author form validation
+     */
+    public function modifyValidation()
+    {
+
+    }
+
+
+    /**
+     * Delete an author
+     */
+    public function del()
+    {
+        //
+    }
+
+    /**
+     * Delete an author form submission
+     */
+    public function delHandler()
+    {
+        //
+    }
+
+
+
+    /********************** OLD
     public function index()
     {
         $authors = Authors::all();
         return view('authors.index', compact('authors'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
     public function create()
     {
         return view('authors.create');
     }
 
-    /**
-     * @param Request $request
-     * @return mixed
-     */
     public function handleCreate(Request $request)
     {
         $author = new Authors;
@@ -45,12 +110,6 @@ class AuthorsController extends Controller
         return Redirect::action('AuthorsController@index');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param Authors $author
-     * @return Response
-     */
     public function edit(Authors $author)
     {
         return view('authors.edit', compact('author'));
@@ -66,11 +125,6 @@ class AuthorsController extends Controller
         return Redirect::action('AuthorsController@index');
     }
 
-
-    /**
-     * @param Authors $author
-     * @return mixed
-     */
     public function delete(Authors $author)
     {
         return view('authors.delete', compact('author'));
@@ -85,11 +139,7 @@ class AuthorsController extends Controller
     }
 
 
-    /**
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function authorValidate(Request $request)
+ public function authorValidate(Request $request)
     {
         $success    = true;
         $errors     = array();
@@ -126,5 +176,6 @@ class AuthorsController extends Controller
         return response()->json(['success' => $success, 'errors' => $errors]);
 
     }
+    **********/
 
 }

@@ -10,31 +10,97 @@ use Validator;
 
 class BooksController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return Response
+     * Books list
      */
+    public function index()
+    {
+        //
+    }
+
+
+    /**
+     * Add a book
+     */
+    public function add()
+    {
+        //
+    }
+
+    /**
+     * Add a book form submission
+     */
+    public function addHandler()
+    {
+        //
+    }
+
+    /**
+     * Add a book form validation
+     */
+    public function addValidation()
+    {
+        //
+    }
+
+
+    /**
+     * Modify a book
+     */
+    public function modify()
+    {
+        //
+    }
+
+    /**
+     * Modify a book form submission
+     */
+    public function modifyHandler()
+    {
+        //
+    }
+
+    /**
+     * Modify a book form validation
+     */
+    public function modifyValidation()
+    {
+        //
+    }
+
+
+    /**
+     * Delete a book
+     */
+    public function del()
+    {
+        //
+    }
+
+    /**
+     * Delete a book form submission
+     */
+    public function delHandler()
+    {
+        //
+    }
+
+
+    /****************** OLD
     public function index()
     {
         $books = Books::all();
         return view('books.index', compact('books'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
+
     public function create()
     {
         return view('books.create');
     }
 
-    /**
-     * @param Request $request
-     * @return mixed
-     */
+
     public function handleCreate(Request $request)
     {
 
@@ -47,21 +113,12 @@ class BooksController extends Controller
 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
     public function edit(Books $book)
     {
         return view('books.edit', compact('book'));
     }
 
-    /**
-     * @param Request $request
-     * @return mixed
-     */
+
     public function handleEdit(Request $request)
     {
         $book = Books::findOrFail($request->input('id'));
@@ -73,19 +130,13 @@ class BooksController extends Controller
     }
 
 
-    /**
-     * @param Books $book
-     * @return mixed
-     */
+
     public function delete(Books $book)
     {
         return view('books.delete', compact('book'));
     }
 
-    /**
-     * @param Request $request
-     * @return mixed
-     */
+
     public function handleDelete(Request $request)
     {
         $book = Books::findOrFail($request->input('id'));
@@ -131,5 +182,6 @@ class BooksController extends Controller
         return response()->json(['success' => $success, 'errors' => $errors]);
 
     }
+    ********************/
 
 }
