@@ -1,12 +1,10 @@
 <?php
+namespace onLibrary\Http\Controllers\Admin;
 
-namespace onLibrary\Http\Controllers;
-
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
+
 use onLibrary\Http\Requests;
-use onLibrary\Models\Authors;
-use Validator;
+use onLibrary\Http\Controllers\Controller;
 
 class AuthorsController extends Controller
 {

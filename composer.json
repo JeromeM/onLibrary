@@ -20,7 +20,9 @@
     "autoload": {
         "classmap": [
             "database",
-            "app/Models"
+            "app/Models",
+            "app/Http/Controllers/Admin",
+            "app/Http/Controllers/Users"
         ],
         "psr-4": {
             "onLibrary\\": "app/"
