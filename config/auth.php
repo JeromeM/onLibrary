@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'model' => onLibrary\User::class,
+    'model' => onLibrary\Models\Users::class,
 
     /*
     |--------------------------------------------------------------------------

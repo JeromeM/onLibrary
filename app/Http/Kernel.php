@@ -13,10 +13,10 @@ class Kernel extends HttpKernel
      */
     protected $middleware = [
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
-        \onLibrary\Http\Middleware\EncryptCookies::class,
         \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
         \Illuminate\Session\Middleware\StartSession::class,
         \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+        \onLibrary\Http\Middleware\EncryptCookies::class,
         \onLibrary\Http\Middleware\VerifyCsrfToken::class,
     ];
 
@@ -26,8 +26,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth' => \onLibrary\Http\Middleware\Authenticate::class,
-        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'guest' => \onLibrary\Http\Middleware\RedirectIfAuthenticated::class,
+        'auth'  => \onLibrary\Http\Middleware\Authenticate::class,
+        'admin' => \onLibrary\Http\Middleware\Admin::class,
     ];
 }

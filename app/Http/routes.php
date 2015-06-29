@@ -24,7 +24,7 @@ Route::model('author',  'onLibrary\Models\Authors');
  * Library group
  */
 Route::group([
-    'middleware' => 'userIsLogged',
+    'middleware' => 'auth',
     'namespace'  => 'Users',
 ], function() {
     // Navigation
