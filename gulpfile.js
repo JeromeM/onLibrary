@@ -16,7 +16,9 @@ elixir(function(mix) {
 
     // Compilation CSS en SASS
     mix.sass([
-        'onlibrary.scss'
+        'general.scss',
+        'layout.scss',
+        'login.scss'
     ]);
 
     // Compilation CoffeeScript

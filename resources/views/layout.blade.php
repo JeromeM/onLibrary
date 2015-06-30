@@ -16,13 +16,19 @@
         <div class="container">
             <nav class="navbar navbar-default" role="navigation">
                 <div class="navbar-header">
-                    <a href="{{ action('IndexController@index') }}" class="navbar-brand">{{ trans('general.index') }}</a>
-                    @if (Auth::check())
-                        <a href="{{ action('Auth\AuthController@getLogout') }}" class="navbar-brand">{{ trans('general.logout') }}</a>
-                    @else
-                        <a href="{{ action('Auth\AuthController@getLogin') }}" class="navbar-brand">{{ trans('general.login') }}</a>
-                        <a href="{{ action('Auth\AuthController@getRegister') }}" class="navbar-brand">{{ trans('general.register') }}</a>
-                    @endif
+                    <div class="pull-left">
+                        <a href="{{ action('IndexController@index') }}" class="navbar-brand">{{ trans('general.index') }}</a>
+                    </div>
+                    <div class="pull-right">
+                        @if (Auth::check())
+                            <a href="{{ action('Users\AccountController@show') }}" class="navbar-brand">{{ trans('account.infos') }}</a>
+                            <a href="{{ action('Users\AccountController@buyPlan') }}" class="navbar-brand">{{ trans('account.plan') }}</a>
+                            <a href="{{ action('Auth\AuthController@getLogout') }}" class="navbar-brand">{{ trans('general.logout') }}</a>
+                        @else
+                            <a href="{{ action('Auth\AuthController@getLogin') }}" class="navbar-brand">{{ trans('general.login') }}</a>
+                            <a href="{{ action('Auth\AuthController@getRegister') }}" class="navbar-brand">{{ trans('general.register') }}</a>
+                        @endif
+                    </div>
                 </div>
             </nav>
             @yield('content')
