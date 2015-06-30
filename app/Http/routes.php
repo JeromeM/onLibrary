@@ -15,13 +15,12 @@ Route::get('/contact',  'IndexController@contact');
 Route::group([
     'namespace' => 'Auth'
 ], function() {
-    // Login / Logout
-    Route::get('auth/login',        'AuthController@getLogin');
-    Route::post('auth/login',       'AuthController@postLogin');
-    Route::get('auth/logout',       'AuthController@getLogout');
-    // Register
-    Route::get('auth/register',     'AuthController@getRegister');
-    Route::post('auth/register',    'AuthController@postRegister');
+    Route::get('/login',        'AuthController@getLogin');
+    Route::get('/logout',       'AuthController@getLogout');
+    Route::get('/register',     'AuthController@getRegister');
+
+    Route::post('/login',       'AuthController@postLogin');
+    Route::post('/register',    'AuthController@postRegister');
 });
 
 

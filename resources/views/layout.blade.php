@@ -17,8 +17,12 @@
             <nav class="navbar navbar-default" role="navigation">
                 <div class="navbar-header">
                     <a href="{{ action('IndexController@index') }}" class="navbar-brand">{{ trans('general.index') }}</a>
-                    <a href="{{ action('BooksController@index') }}" class="navbar-brand">{{ trans('general.books') }}</a>
-                    <a href="{{ action('AuthorsController@index') }}" class="navbar-brand">{{ trans('general.authors') }}</a>
+                    @if (Auth::check())
+                        <a href="{{ action('Auth\AuthController@getLogout') }}" class="navbar-brand">{{ trans('general.logout') }}</a>
+                    @else
+                        <a href="{{ action('Auth\AuthController@getLogin') }}" class="navbar-brand">{{ trans('general.login') }}</a>
+                        <a href="{{ action('Auth\AuthController@getRegister') }}" class="navbar-brand">{{ trans('general.register') }}</a>
+                    @endif
                 </div>
             </nav>
             @yield('content')
