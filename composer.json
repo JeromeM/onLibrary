@@ -9,7 +9,8 @@
         "laravel/framework": "5.1.*",
         "barryvdh/laravel-ide-helper": "v2.0.5",
         "components/jquery": "2.1.4",
-        "filsh/jquery-autocomplete": "dev-master"
+        "filsh/jquery-autocomplete": "dev-master",
+        "doctrine/dbal": "~2.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

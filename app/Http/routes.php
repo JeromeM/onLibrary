@@ -5,16 +5,29 @@
  * Homepage and related
  */
 Route::get('/',         'IndexController@index');
-Route::get('/login',    'IndexController@login');
-Route::get('/create',   'IndexController@create');
 Route::get('/plans',    'IndexController@plans');
 Route::get('/contact',  'IndexController@contact');
 
 
 /**
+ * Login / Create account / Logout
+ */
+Route::group([
+    'namespace' => 'Auth'
+], function() {
+    // Login / Logout
+    Route::get('auth/login',        'AuthController@getLogin');
+    Route::post('auth/login',       'AuthController@postLogin');
+    Route::get('auth/logout',       'AuthController@getLogout');
+    // Register
+    Route::get('auth/register',     'AuthController@getRegister');
+    Route::post('auth/register',    'AuthController@postRegister');
+});
+
+
+/**
  * Data models
  */
-// Data model
 Route::model('user',    'onLibrary\Models\Users');
 Route::model('book',    'onLIbrary\Models\Books');
 Route::model('author',  'onLibrary\Models\Authors');

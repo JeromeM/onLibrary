@@ -11,9 +11,8 @@
 |
 */
 
-$factory->define(onLibrary\User::class, function ($faker) {
+$factory->define(onLibrary\Users::class, function ($faker) {
     return [
-        'name' => $faker->name,
         'email' => $faker->email,
         'password' => str_random(10),
         'remember_token' => str_random(10),

@@ -1,9 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
-class DatabaseSeeder extends Seeder
+class PlansTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,10 +13,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Model::unguard();
-
-        $this->call('PlansTableSeeder');
-
-        Model::reguard();
+        DB::table('plans')->insert([
+            'name'      =>  'Gratuit',
+            'maxbooks'  => 100,
+        ]);
     }
 }

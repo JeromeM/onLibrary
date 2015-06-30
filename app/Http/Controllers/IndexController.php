@@ -19,24 +19,6 @@ class IndexController extends Controller
 
 
     /**
-     * Login
-     */
-    public function login()
-    {
-        //
-    }
-
-
-    /**
-     * Account creation
-     */
-    public function create()
-    {
-        //
-    }
-
-
-    /**
      * Plans listing
      */
     public function plans()
