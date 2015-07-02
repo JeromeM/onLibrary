@@ -14,19 +14,6 @@ elixir.config.sourcemaps = false;
 
 elixir(function(mix) {
 
-    // Compilation CSS en SASS
-    mix.sass([
-        'general.scss',
-        'layout.scss',
-        'login.scss'
-    ]);
-
-    // Compilation CoffeeScript
-    mix.coffee([
-        'authors.coffee',
-        'books.coffee'
-    ]);
-
     // 1 seul fichier CSS
     mix.styles([
         'bootstrap.min.css'
@@ -38,5 +25,21 @@ elixir(function(mix) {
         'jquery.autocomplete.min.js',
         'bootstrap.min.js'
     ], 'public/js', 'resources/assets/js');
+
+    // Compilation CSS en SASS
+    mix.sass([
+        'general.scss',
+        'layout.scss',
+        'index.scss',
+        'login.scss',
+        'register.scss'
+    ]);
+
+    // Compilation CoffeeScript
+    mix.coffee([
+        'layout.coffee',
+        'login.coffee',
+        'register.coffee'
+    ]);
 
 });

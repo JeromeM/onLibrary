@@ -10,7 +10,8 @@
         "barryvdh/laravel-ide-helper": "v2.0.5",
         "components/jquery": "2.1.4",
         "filsh/jquery-autocomplete": "dev-master",
-        "doctrine/dbal": "~2.3"
+        "doctrine/dbal": "~2.3",
+        "laravel/socialite": "v2.0.7"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

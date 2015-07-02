@@ -10,17 +10,27 @@ Route::get('/contact',  'IndexController@contact');
 
 
 /**
- * Login / Create account / Logout
+ * Login / Create account / Logout / ...
  */
 Route::group([
     'namespace' => 'Auth'
 ], function() {
-    Route::get('/login',        'AuthController@getLogin');
-    Route::get('/logout',       'AuthController@getLogout');
-    Route::get('/register',     'AuthController@getRegister');
+    Route::get('/login',                'AuthController@getLogin');
+    Route::get('/logout',               'AuthController@getLogout');
+    Route::get('/register',             'AuthController@getRegister');
 
-    Route::post('/login',       'AuthController@postLogin');
-    Route::post('/register',    'AuthController@postRegister');
+    Route::post('/login',               'AuthController@postLogin');
+    Route::post('/register',            'AuthController@postRegister');
+
+    Route::post('/login/validate',      'AuthController@loginValidate');
+    Route::post('/register/validate',   'AuthController@registerValidate');
+
+    // Reset password
+    Route::get('password/email',            'PasswordController@getEmail');
+    Route::get('password/reset/{token}',    'PasswordController@getReset');
+
+    Route::post('password/email',           'PasswordController@postEmail');
+    Route::post('password/reset',           'PasswordController@postReset');
 });
 
 

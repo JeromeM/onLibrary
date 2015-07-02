@@ -1,5 +1,5 @@
 /****** LOGIN MODAL ******/
-.loginmodal-container {
+.registermodal-container {
   padding: 30px;
   max-width: 350px;
   width: 100% !important;
@@ -37,15 +37,6 @@
     -moz-box-sizing: border-box;
   }
 
-  input[type=checkbox] {
-    float: left;
-  }
-  #label-remember {
-    font-size: 16px;
-    float: left;
-    margin-left: 15px;
-  }
-
   input[type=text]:hover, input[type=password]:hover {
     border: 1px solid #b9b9b9;
     border-top: 1px solid #a0a0a0;
@@ -54,19 +45,20 @@
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
   }
 
-  .loginmodal-submit {
+  .registermodal-submit {
     border: 0px;
     color: #fff;
     text-shadow: 0 1px rgba(0, 0, 0, 0.1);
     background-color: #4d90fe;
     padding: 17px 0px;
     font-size: 14px;
-  }
 
-  .loginmodal-submit:hover {
-    border: 0px;
-    text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-    background-color: #357ae8;
+    &:hover {
+      border: 0px;
+      text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+      background-color: #357ae8;
+    }
+
   }
 
   a {
@@ -79,7 +71,7 @@
     transition: opacity ease 0.5s;
   }
 
-  .login-help {
+  .register-help {
     font-size: 12px;
   }
 

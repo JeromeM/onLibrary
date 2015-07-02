@@ -11,3 +11,25 @@
 .navbar-header {
     float: none !important;
 }
+
+.caret-up {
+  width: 0;
+  height: 0;
+  border-left: 4px solid rgba(0, 0, 0, 0);
+  border-right: 4px solid rgba(0, 0, 0, 0);
+  border-bottom: 4px solid;
+
+  display: inline-block;
+  margin-left: 2px;
+  vertical-align: middle;
+}
+
+.font-biblio {
+  font-family: Bibliotheque;
+  font-size: 38px;
+  color: #888272 !important;
+}
+
+.font-biblio:hover {
+  color: #B8B5A8 !important;
+}

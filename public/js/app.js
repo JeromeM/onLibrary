@@ -1,52 +1,13 @@
 (function() {
   jQuery(function() {
-    var createForm, editForm, errorMessage, inputFirstname, inputLastname, validateAuthor;
-    createForm = $('form[name=authorCreateForm]');
-    editForm = $('form[name=authorEditForm]');
-    inputFirstname = $('input[name=firstname]');
-    inputLastname = $('input[name=lastname]');
-    errorMessage = $('#errorMessage');
-    validateAuthor = function(form) {
-      inputFirstname.removeClass('bg-danger');
-      inputLastname.removeClass('bg-danger');
-      errorMessage.removeClass('show').addClass('hidden');
-      $.ajax({
-        type: 'POST',
-        url: "/author/validate",
-        data: form.serialize(),
-        dataType: 'json',
-        success: function(data, textStatus, jqXHR) {
-          var errors;
-          if (data.success === false) {
-            errors = '';
-            if (data.errors.firstname != null) {
-              inputFirstname.addClass('bg-danger');
-              errors = errors + '<ul>' + data.errors.firstname + '</ul>';
-            }
-            if (data.errors.lastname != null) {
-              inputLastname.addClass('bg-danger');
-              errors = errors + '<ul>' + data.errors.lastname + '</ul>';
-            }
-            if (errors != null) {
-              errorMessage.removeClass('hidden').addClass('show');
-              return errorMessage.html(errors);
-            }
-          } else {
-            form.off("submit");
-            return form.submit();
-          }
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-          return console.log('Ajax error :' + textStatus);
-        }
-      });
-      return false;
-    };
-    createForm.on("submit", function(e) {
-      return validateAuthor($(this));
-    });
-    return editForm.on("submit", function(e) {
-      return validateAuthor($(this));
+    return $(".dropdown").hover(function() {
+      $('.dropdown-menu', this).stop(true, true).fadeIn('fast');
+      $(this).toggleClass('open');
+      return $('b', this).toggleClass('caret caret-up');
+    }, function() {
+      $('.dropdown-menu', this).stop(true, true).fadeOut('fast');
+      $(this).toggleClass('open');
+      return $('b', this).toggleClass('caret caret-up');
     });
   });
 
@@ -54,36 +15,35 @@
 
 (function() {
   jQuery(function() {
-    var createForm, editForm, errorMessage, inputAuthor, inputTitle, validateBook;
-    createForm = $('form[name=bookCreateForm]');
-    editForm = $('form[name=bookEditForm]');
-    inputTitle = $('input[name=title]');
-    inputAuthor = $('input[name=author]');
-    errorMessage = $('#errorMessage');
-    validateBook = function(form) {
-      inputTitle.removeClass('bg-danger');
-      inputAuthor.removeClass('bg-danger');
-      errorMessage.removeClass('show').addClass('hidden');
+    var emailInputError, inputEmail, inputPassword, loginForm, pwdInputError, validateLogin;
+    loginForm = $('form[name=loginForm]');
+    inputEmail = $('input[name=email]');
+    inputPassword = $('input[name=password]');
+    emailInputError = $('#emailInputError');
+    pwdInputError = $('#passwordInputError');
+    validateLogin = function(form) {
+      inputEmail.removeClass('bg-danger');
+      inputPassword.removeClass('bg-danger');
+      emailInputError.hide();
+      pwdInputError.hide();
       $.ajax({
         type: 'POST',
-        url: "/book/validate",
+        url: "/login/validate",
         data: form.serialize(),
         dataType: 'json',
         success: function(data, textStatus, jqXHR) {
           var errors;
           if (data.success === false) {
-            errors = void 0;
-            if (data.errors.title != null) {
-              inputTitle.addClass('bg-danger');
-              errors = '<ul>' + data.errors.title + '</ul>';
+            errors = '';
+            if (data.errors.email != null) {
+              inputEmail.addClass('bg-danger');
+              emailInputError.show().html(data.errors.email);
+              errors = errors + '<ul>' + data.errors.email + '</ul>';
             }
-            if (data.errors.author != null) {
-              inputAuthor.addClass('bg-danger');
-              errors = errors + '<ul>' + data.errors.author + '</ul>';
-            }
-            if (errors != null) {
-              errorMessage.removeClass('hidden').addClass('show');
-              return errorMessage.html(errors);
+            if (data.errors.password != null) {
+              inputPassword.addClass('bg-danger');
+              pwdInputError.show().html(data.errors.password);
+              return errors = errors + '<ul>' + data.errors.password + '</ul>';
             }
           } else {
             form.off("submit");
@@ -96,11 +56,62 @@
       });
       return false;
     };
-    createForm.on("submit", function(e) {
-      return validateBook($(this));
+    return loginForm.on("submit", function(e) {
+      return validateLogin($(this));
     });
-    return editForm.on("submit", function(e) {
-      return validateBook($(this));
+  });
+
+}).call(this);
+
+(function() {
+  jQuery(function() {
+    var emailInputError, inputEmail, inputPassword, inputPasswordConfirm, pwdConfirmInputError, pwdInputError, registerForm, validateRegister;
+    registerForm = $('form[name=registerForm]');
+    inputEmail = $('input[name=email]');
+    inputPassword = $('input[name=password]');
+    inputPasswordConfirm = $('input[name=password_confirm]');
+    emailInputError = $('#emailInputError');
+    pwdInputError = $('#passwordInputError');
+    pwdConfirmInputError = $('#passwordConfirmInputError');
+    validateRegister = function(form) {
+      inputEmail.removeClass('bg-danger');
+      inputPassword.removeClass('bg-danger');
+      inputPasswordConfirm.removeClass('bg-danger');
+      emailInputError.hide();
+      pwdInputError.hide();
+      pwdConfirmInputError.hide();
+      $.ajax({
+        type: 'POST',
+        url: "/register/validate",
+        data: form.serialize(),
+        dataType: 'json',
+        success: function(data, textStatus, jqXHR) {
+          var errors;
+          if (data.success === false) {
+            errors = '';
+            if (data.errors.email != null) {
+              inputEmail.addClass('bg-danger');
+              emailInputError.show().html(data.errors.email);
+              errors = errors + '<ul>' + data.errors.email + '</ul>';
+            }
+            if (data.errors.password != null) {
+              inputPassword.addClass('bg-danger');
+              pwdInputError.show().html(data.errors.password);
+              return errors = errors + '<ul>' + data.errors.password + '</ul>';
+            }
+          } else {
+            form.off("submit");
+            return form.submit();
+          }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+          return console.log('Ajax error :' + textStatus);
+        }
+      });
+      return false;
+    };
+    return registerForm.on("submit", function(e) {
+      return validateRegister($(this));
     });
   });
 

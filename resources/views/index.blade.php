@@ -1,7 +1,14 @@
 @extends('layout')
 
 @section('content')
-    <div class="page-header">
-        <h1>onLibrary</h1>
+    <div class="index-dialog">
+        <div class="index-container">
+            <div class="col-md-6">
+                TEST
+            </div>
+            <div class="col-md-6">
+                TEST
+            </div>
+        </div>
     </div>
 @stop
