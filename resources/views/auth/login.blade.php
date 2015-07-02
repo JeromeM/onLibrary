@@ -1,7 +1,14 @@
 @extends('layout')
 
 @section('content')
-    <form method="POST" action="/login" class="form-horizontal" name="loginForm">
+
+    @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+    @endif
+
+    <form method="POST" action="{{ action('Auth\AuthController@postLogin') }}" class="form-horizontal" name="loginForm">
         {!! csrf_field() !!}
 
         <div class="modal-dialog">
@@ -9,7 +16,7 @@
                 <h1>Login to Your Account</h1><br>
 
                 <p id="emailInputError" class="text-danger" style="display:none;"></p>
-                <input type="text" name="email" placeholder="Email"/>
+                <input type="text" name="email" placeholder="Email" value="{{ old('email') }}"/>
 
                 <p id="passwordInputError" class="text-danger" style="display:none;"></p>
                 <input type="password" name="password" placeholder="Password"/>
@@ -18,7 +25,7 @@
                 <input type="submit" name="login" class="login loginmodal-submit" value="Login"/>
 
                 <div class="login-help">
-                    <a href="{{ action('Auth\AuthController@getRegister') }}">Register</a> - <a href="{{ action('PasswordController@getEmail') }}">Forgot Password</a>
+                    <a href="{{ action('Auth\AuthController@getRegister') }}">Register</a> - <a href="{{ action('Auth\PasswordController@getEmail') }}">Forgot Password</a>
                 </div>
             </div>
         </div>
