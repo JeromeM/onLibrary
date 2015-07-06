@@ -1,6 +1,15 @@
 <?php
 
 
+
+/**
+ * Data models
+ */
+Route::model('user',    'onLibrary\Models\Users');
+Route::model('book',    'onLIbrary\Models\Books');
+Route::model('author',  'onLibrary\Models\Authors');
+
+
 /**
  * Homepage and related
  */
@@ -35,14 +44,6 @@ Route::group([
 
 
 /**
- * Data models
- */
-Route::model('user',    'onLibrary\Models\Users');
-Route::model('book',    'onLIbrary\Models\Books');
-Route::model('author',  'onLibrary\Models\Authors');
-
-
-/**
  * Library group
  */
 Route::group([
@@ -53,7 +54,7 @@ Route::group([
     Route::get('/account',                          'AccountController@index');
 
     Route::get('/account/infos',                    'AccountController@show');
-    Route::get('/account/modify',                   'AccountController@modify');
+    //Route::get('/account/modify',                   'AccountController@modify');
     Route::get('/account/plan',                     'AccountController@buyPlan');
 
     Route::get('/account/addBook',                  'AccountController@addBook');
